@@ -1,17 +1,21 @@
+import java.util.LinkedList;
 import java.util.Stack;
+import java.util.Queue;
 public class PalindromeCheckerApp {
     public static void main(String args[]) {
-        //Checking palindrome by adding characters to the stack and then comparing
-        String word="12231";
+        //Checking palindrome by using Queue and Stack
+        String word="civic";
         boolean ans=true;
        Stack<Character> stack=new Stack<>();
+       Queue<Character> queue=new LinkedList<>();
 
         for(int i=0;i<word.length();i++){
             stack.push(word.charAt(i));
+            queue.add(word.charAt(i));
         }
 
         for(int i=0;i<word.length();i++){
-            if(word.charAt(i)!=stack.pop()){
+            if(queue.remove()!=stack.pop()){
                 ans=false;
                 break;
             }
