@@ -1,24 +1,16 @@
-import java.util.LinkedList;
-import java.util.Stack;
-import java.util.Queue;
+import java.util.*;
+
 public class PalindromeCheckerApp {
     public static void main(String args[]) {
         //Checking palindrome by using Queue and Stack
-        String word="civic";
+        String word="refer";
         boolean ans=true;
-       Stack<Character> stack=new Stack<>();
-       Queue<Character> queue=new LinkedList<>();
-
+        Deque<Character> d=new ArrayDeque<>();
         for(int i=0;i<word.length();i++){
-            stack.push(word.charAt(i));
-            queue.add(word.charAt(i));
+            d.add(word.charAt(i));
         }
-
-        for(int i=0;i<word.length();i++){
-            if(queue.remove()!=stack.pop()){
-                ans=false;
-                break;
-            }
+        while(d.size()>1){
+            if(d.pop()!=d.removeLast()) ans=false;
         }
         System.out.println("Input Text: "+word);
         System.out.println("Is it a Palindrome: "+ans);
